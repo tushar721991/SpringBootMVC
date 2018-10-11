@@ -8,6 +8,6 @@ public class BankFrontEndApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BankFrontEndApplication.class, args);
-		System.out.println("Helllo");
+		System.out.println("Hello");
 	}
 }
