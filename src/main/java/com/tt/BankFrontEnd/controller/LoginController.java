@@ -19,12 +19,12 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	@RequestMapping(value = "")
+	@RequestMapping(value = "/")
 	public String showLoginpage(ModelMap model) {
 		return "login";
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public String handleLogin(HttpServletRequest request, ModelMap map, @RequestParam String name,
 			@RequestParam String password) {
 		boolean isValid = loginService.validateUser(name, password);

@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
 import com.tt.BankFrontEnd.entities.Todo;
@@ -22,7 +24,8 @@ public class TodoService {
 	}
 
 	public List<Todo> retrieveTodos(String user) {
-		return todoList.stream().filter(todo -> todo.getUser().equalsIgnoreCase(user)).collect(Collectors.toList());
+		List<Todo> todos = todoList.stream().filter(todo -> todo.getUser().equalsIgnoreCase(user)).collect(Collectors.toList());
+		return todos;
 	}
 
 	public void addTodo(String name, String desc, Date targetDate, boolean isDone) {
@@ -34,10 +37,15 @@ public class TodoService {
 	}
 
 	public Todo retrieveTodos(String user, int id) {
-		// TODO Auto-generated method stub
+		
 		return todoList
 				.stream()
 				.filter(todo -> todo.getUser().equalsIgnoreCase(user) && todo.getId() == id)
 				.collect(Collectors.toList()).get(0);	
+	}
+
+	public void updateTodo(Todo todo) {
+		todoList.remove(todo);
+		todoList.add(todo);
 	}
 }
